@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'IllustController@top');
+Route::get('/illusts/create', function() {
+    return view('illusts/create');
 });
+Route::get('/illusts/{illust}', 'IllustController@show');
+Route::get('/illusts/{illust}/edit', 'IllustController@edit');
+Route::get('/illusts/profile', 'IllustController@profile');
+
+Route::delete('/illusts/{illust}', 'IllustController@delete');
+
+Route::put('/illusts/{illust}', 'IllustController@update');
+
+Route::post('/illusts', 'IllustController@store');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
